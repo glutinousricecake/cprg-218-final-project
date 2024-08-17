@@ -12,7 +12,7 @@ Scope: This website is intended for use within the context of this project only.
 
 Limitations: Any content, functionality, or design elements should not be considered for broader use outside of this project's framework.
 
-Accessibility: Please note that the website may have limitations and is not optimized for general public use as its not completed by the owner within the time frame that was given.
+Accessibility: Please note that the website may have limitations and is not optimized for general public use; as its not completed by the owner within the time frame that was given.
 
 
-Thank you for.
+Thank you.
