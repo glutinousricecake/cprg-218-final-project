@@ -4,7 +4,7 @@
 
 This website has been developed exclusively for the purposes of this project. It is a demonstration site and is not intended for public use beyond the scope of this project.
 
-Purpose
+Purpose:
 The primary goal of this website is to showcase the concepts, designs, and functionalities as part of the [Final] project. It is designed to illustrate the project's objectives and deliverables, and serves as a working example of the project’s requirements and features.
 
 Usage
