@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanpai! Japanese Restaurant</title>
+    <linkrel="stylesheet"href="Log-in.css">
+  
+
+    <style>
+
+.menu-title {
+        font-size: 64px;
+        color: white;
+        font-family: "Luminari", fantasy;
+    }
+    
+    /* Add the new styles for the authorization buttons here */
+    .auth-buttons {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        z-index: 5; /* Ensure it sits above other content */
+    }
+
+    .auth-button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 16px;
+        font-family: Palatino, serif;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Palatino, serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 2.5in;
+            height: 100vh;
+            background-color: black;
+            z-index: 2;
+        }
+
+        .logo {
+            position: fixed;
+            top: 45px;
+            left: 40px;
+            width: 132.34px;
+            height: 132.34px;
+            border-radius: 55%;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .logo img {
+            width: 101%;
+            height: auto;
+        }
+
+        .home, .about {
+            position: fixed;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            z-index: 3;
+            font-family: Palatino, serif;
+        }
+
+        .home {
+            top: calc(50px + 132.34px + 50px);
+            left: 65px;
+            color: #701f28;
+        }
+
+        .about {
+            top: calc(50px + 130.34px + 90px);
+            left: 65px;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('photo-1504416285472-eccf03dd31eb.avif') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+        .second-background {
+        position: relative;
+        margin-top: 120px;
+        background-image: url('Untitled-1.png');
+        background-size: contain;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        height: 300px;
+
+    
+        }
+
+        .second-background-overlay {
+    margin-top: 120px;
+    height: 300px;
+    width: calc(100% - 2.5in);
+    margin-left: 2.5in;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('photo-1514190051997-0f6f39ca5cde.avif') center/cover no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.overlay-message {
+    font-size: 52px;
+    font-family: "Luminari", fantasy;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure it's above the overlay */
+}
+
+
+
+.text-below-background {
+            position: relative;
+            font-size: 32px;
+            font-family: Palatino, serif;
+            color: white;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            margin-top: 100px;
+            margin-left: 110px;
+            top: calc(210vh + 200px); 
+            transform: translateY(-50%); /* Adjust the positioning */
+            z-index: 2; /* Ensure it's above the black background */
+        }
+
+        .additional-text {
+    font-size: 16px;
+    font-family: Palatino, serif;
+    color: white;
+    text-align: center;
+    position: absolute;
+    width: calc(100% - 2.5in);
+    left: 55%;
+    transform: translateX(-50%);
+    top: calc(230vh + 200px); /* Adjust the top position as needed */
+    z-index: 2;
+}
+
+.additional-text-2 {
+    font-family: Palatino, serif;
+    color: white;
+    text-align: center;
+    position: absolute;
+    width: calc(100% - 5in); /* Adjust the width as needed */
+    left: 55%;
+    transform: translateX(-50%);
+    top: calc(240vh + 230px); /* Adjust the top position as needed */
+    z-index: 2;
+}
+
+
+
+
+        .transparent-box {
+            position: absolute;
+            top: 50%;
+            left: 2.5in;
+            transform: translate(0%, -50%);
+            width: calc(100vw - 2.5in);
+            height: 55%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            pointer-events: none;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .welcome-text {
+            font-size: 72px;
+            color: white;
+            text-align: center;
+            font-family: "Luminari", fantasy;
+        }
+
+        .social-media-icons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 3;
+            display: flex;
+        }
+
+        .social-media-icons img {
+            width: 130px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #701f28;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-family: Palatino, serif;
+        }
+
+        .menu-section {
+            position: relative;
+            width: calc(100% - 2.5in);
+            margin-left: 2.5in;
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-size: 64px;
+            font-family: "Luminari", fantasy;
+            padding: 50px 0;
+            z-index: 4;
+        }
+
+        .menu-title {
+            font-size: 64px;
+            color: white;
+            font-family: "Luminari", fantasy;
+ 
+        }
+        .logo-container {
+            position:relative;
+           left: 110px;
+            margin-top: 20px; 
+        }
+
+        .logo-containerimg {
+            width: 220px; /* Adjust size as needed */height: auto; /* Maintain aspect ratio */
+        } 
+    
+        
+        .contact-opening-hours-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto; /* Center the container horizontally */position: relative;
+}
+
+.address, .contact-us, .opening-hours {
+    flex: 1;
+    margin-right: 0px;
+    text-align: center; /* Center content horizontally within each column */position: relative;
+}
+
+/* Adjust vertical alignment with transform */.contact-opening-hours-container {
+    transform: translateY(20px); /* Move container down or up */
+}
+
+.address, .contact-us, .opening-hours {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within each column */transform: translateY(-10px); /* Fine-tune vertical alignment if needed */
+}
+
+
+/* Additional styling for the columns to center them within the container */.address, .contact-us, .opening-hours {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within each column */
+}
+
+.contact-opening-hours-container {
+    padding: 40px; 
+}
+
+
+
+.dropdown-button {
+            background-color: white;
+            color: black;
+            padding: 10px20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 02px5pxrgba(0, 0, 0, 0.1);
+        }
+
+        /* Add an arrow down icon */.dropdown-button::after {
+            content: '▼';
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        /* Dropdown menu styles */.dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 02px5pxrgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Dropdown item styles */.dropdown-item {
+            display: block;
+            padding: 10px20px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+        /* Hover state for dropdown items */.dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Show menu when active */.show {
+            display: block;
+        }
+
+
+
+    </style>
+    
+
+    
+</head>
+
+<body>
+    
+
+        
+    <div class="auth-buttons">
+    <button class="auth-button">Log In</button>
+    <button class="auth-button">Sign Up</button>
+    <div class="dropdown"><button class="dropdown-button">Language</button><div class="dropdown-menu"><a href="#" class="dropdown-item">English</a><a href="#" class="dropdown-item">Français</a><a href="#" class="dropdown-item">日本語</a><!-- Japanese Kanji --></div></div>
+
+    
+    
+</div>
+
+    <div class="border"></div>
+    <div class="background-image"></div>
+    <div class="container">
+        <div class="logo">
+            <img src="IMG_2239.PNG" alt="Kanpai! Logo        "></div>
+            <a href="#" class="home">Home</a>
+            <a href="#" class="about">About Us</a>
+            <div class="transparent-box">
+                <div class="content">
+                    <h1 class="welcome-text">Welcome to <span style="font-size: 92px;">Kanpai!</span></h1>
+                    
+                    <div class="button-container">
+                        <button class="button">Menu</button>
+                        <button class="button">Order Here</button>
+                        <button class="button">Online Reservations</button>
+                        <button class="button">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Other existing styles remain untouched */
+            
+            .button, .welcome-text {
+                opacity: 0; /* Start with 0 opacity */
+                animation: fadeIn 2s forwards; /* Apply the fade-in animation */
+            }
+        
+            @keyframes fadeIn {
+                from {
+                    opacity: 0; /* Start with 0 opacity */
+                }
+                to {
+                    opacity: 1; /* Fade in to full opacity */
+                }
+            }
+        </style>
+        
+    
+        <div class="menu-section">
+            <h2 class="menu-title">Our Menu</h2>
+
+            </div>
+
+            <style>
+                /* Other existing styles remain untouched */
+            
+                .slideshow-image {
+                
+                    width: 700px; /* Set the width to 6 inches (approx 576px) */
+                    height: 384px; /* Set the height to 4 inches (approx 384px) */
+                    /* Keep other properties of .slideshow-image as they are */
+                }
+            
+                /* Continue with other CSS styles as needed */
+            </style>
+
+<style>
+    /* Other existing styles remain untouched */
+    
+    .menu-section {
+        position: relative;
+        width: calc(100% - 2.5in);
+        margin-left: 2.5in;
+        text-align: center;
+        background-color: black;
+        color: white;
+        font-size: 64px;
+        font-family: "Luminari", fantasy;
+        padding: 50px 0;
+        z-index: 1;
+    }
+    .menu-title {
+        font-size: 64px;
+        color: white;
+        font-family: "Luminari", fantasy;
+    }
+    
+    .slideshow-container {
+        display: flex;
+        justify-content: center; /* Center the images horizontally */
+        align-items: center; /* Center the images vertically */
+        margin-top: 15px; /* Spacing from the top */
+        margin-left: 250px; /* Indentation from the right */
+        height: 400px; /* Set a fixed height for the slideshow container */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+    
+    .slideshow-image {
+        width: 700px;
+        height: 400px;
+        margin: 0 10px;
+        display: none;
+    }
+</style>
+
+
+<!-- Slideshow Container -->
+<div class="slideshow-container">
+    <img class="slideshow-image" src="image1.jpeg" alt="Food Image 1" style="display: none;">
+    <img class="slideshow-image" src="image2.jpeg" alt="Food Image 2" style="display: none;">
+    <img class="slideshow-image" src="image3.jpeg" alt="Food Image 3" style="display: none;">
+    <img class="slideshow-image" src="image4.jpeg" alt="Food Image 4" style="display: none;">
+    <img class="slideshow-image" src="image5.jpeg" alt="Food Image 5" style="display: none;">
+    <img class="slideshow-image" src="image6.jpeg" alt="Food Image 6" style="display: none;">
+    <img class="slideshow-image" src="image7.jpeg" alt="Food Image 7" style="display: none;">
+    <img class="slideshow-image" src="image8.jpeg" alt="Food Image 8" style="display: none;">
+    <img class="slideshow-image" src="image9.jpeg" alt="Food Image 9" style="display: none;">
+</div>
+
+
+
+<div class="view-menu-button">
+    <button class="button">View Full Menu</button>
+</div>
+
+<style>
+     .view-menu-button {
+    margin-top: 70px; /* Adds vertical space between the slideshow and the button */
+    margin-left: 2in; /* Adjusts horizontal position to align with your content */
+    text-align: center; /* Aligns the button to the left */
+}
+
+</style>
+
+
+<!-- Second background image section -->
+<div class="second-background-overlay">
+
+
+
+    <div class="overlay-message">Home of Authentic Japanese Cuisine</div>
+
+</div>
+
+<style>
+    .logo-container {
+            text-align: center;
+            margin-top: 250px; /* Adjust spacing as needed */
+        }
+        .logo-containerimg {
+            width: 220px; /* Adjust size as needed */height: auto; /* Maintain aspect ratio */
+        }
+
+</style>
+<div class="logo-container"><img src="IMG_2239.PNG" alt="Restaurant Logo"></div>
+
+<div class="contact-opening-hours-container"><div class="address"><h3>ADDRESS</h3><p>1301 16 Ave NW</p><p>Calgary, AB T2M 0L4</p></div><div class="contact-us"><h3>CONTACT US</h3><p>kanpai.kitchen@fakegmail.com</p><p>+1 (587) 356 3288</p></div><div class="opening-hours"><h3>OPENING HOURS</h3><p>MON - THURS: 11:00 AM - 10:00 PM</p><p>FRI - SAT: 11:00 AM - 11:00 PM</p><p>SUN: 11:00 AM - 10:00 PM</p></div></div>
+
+
+
+
+
+<style>/* Insert CSS here *//* Dropdown container */.dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown button */.dropdown-button {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            color: black;
+            font-size: 16px;
+            font-family: Palatino, serif;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        /* Dropdown content (hidden by default) */.dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            color: black;
+            min-width: 160px;
+            box-shadow: 0px8px16px0pxrgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        /* Dropdown items */.dropdown-item {
+            color: black;
+            padding: 12px16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown items on hover */.dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Show the dropdown content on button hover */.dropdown:hover.dropdown-content {
+            display: block;
+        }
+    </style></head><body><div class="dropdown"><button class="auth-button dropdown-button">Language</button><div class="dropdown-content"><a href="#" class="dropdown-item" data-language="en">English</a><a href="#" class="dropdown-item" data-language="fr">Français</a><a href="#" class="dropdown-item" data-language="jp">日本語</a></div></div><script>// Insert JavaScript heredocument.addEventListener('DOMContentLoaded', () => {
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const selectedLanguage = item.getAttribute('data-language');
+                    console.log('Selected language:', selectedLanguage);
+                    // Here you would handle the language selection (e.g., change the site language)// For example, update the button text to the selected languagedocument.querySelector('.dropdown-button').textContent = item.textContent;
+                });
+            });
+        
+    </script>
+</style>
+
+<script>
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.slideshow-image');
+    const totalImages = images.length;
+
+    function showImage(index) {
+        images.forEach(img => img.style.display = 'none'); // Hide all images
+        images[index].style.display = 'block'; // Show the current image
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % totalImages; // Cycle through the images
+        showImage(currentImageIndex);
+    }
+
+    // Initially show the first image
+    showImage(currentImageIndex);
+
+    // Change the image every 5 seconds
+    setInterval(nextImage, 5000);
+</script>
+<script>
+
+document.querySelector('.dropdown-button').addEventListener('click', function() {
+    const menu = document.querySelector('.dropdown-menu');
+    menu.classList.toggle('show');
+});
+
+</script>
+
+
+        <!-- Social Media Icons Section -->
+        <div class="social-media-icons">
+            <img src="social media.png" alt="Social Media Logos">
+        </div>
+
+     
+        
+</body>
+</html>
